@@ -24,10 +24,15 @@ Elige una sesión en el menú de la izquierda:
   |E| ≤ n·h³/12·max|f''|, n mínimo para una tolerancia y análisis de
   convergencia. Caso GAA: tráfico de red R(t) de un microservicio en
   [0, 12] s.
+- **Sesión 13 — Integración numérica (reglas de Simpson)**: Simpson 1/3
+  simple y compuesto (n par, coeficientes vectorizados [1,4,2,…,4,1]),
+  Simpson 3/8, cota |E| ≤ (b−a)h⁴/180·max|f⁽⁴⁾|, n mínimo y convergencia.
+  Caso GAA: consumo energético P(t) de un centro de datos en [0, 6] h.
 """
 )
 
 st.page_link("pages/1_Sesion_12_Integracion_Trapecio.py", label="Ir a Sesión 12 — Integración (Trapecio)", icon="📏")
+st.page_link("pages/2_Sesion_13_Integracion_Simpson.py", label="Ir a Sesión 13 — Integración (Simpson)", icon="📐")
 
 st.markdown("---")
 st.caption("Repositorio: [JeanpierreSam/MN-U3](https://github.com/JeanpierreSam/MN-U3)")

@@ -15,8 +15,11 @@ MN-U3/
 ├── requirements.txt
 ├── app.py                                   <- página de inicio (entry point de Streamlit)
 ├── integracion_solver.py                    <- lógica de la Sesión 12 (Trapecio / Rectángulos)
+├── simpson_solver.py                        <- lógica de la Sesión 13 (Simpson 1/3 y 3/8)
+├── gaa_s13_simpson.py                       <- programa de consola de la GAA 13 (input + excepción)
 └── pages/
-    └── 1_Sesion_12_Integracion_Trapecio.py  <- interfaz de la Sesión 12
+    ├── 1_Sesion_12_Integracion_Trapecio.py  <- interfaz de la Sesión 12
+    └── 2_Sesion_13_Integracion_Simpson.py   <- interfaz de la Sesión 13
 ```
 
 ## Cómo correr la app localmente
@@ -60,3 +63,25 @@ streamlit run app.py
 ```bash
 python integracion_solver.py   # autoprueba con todos los casos de las guías
 ```
+
+## Sesión 13 — Integración numérica (reglas de Simpson)
+
+- `simpson_solver.py` — `simpson13(f, a, b, n)` (Simpson 1/3 compuesto con
+  el vector de coeficientes `[1, 4, 2, 4, …, 2, 4, 1]` y un producto
+  punto), `simpson38`, versiones para datos tabulados, `NNoParError`
+  (excepción si n no es entero par), `cota_error_simpson13`,
+  `n_minimo_simpson13`, `max_abs_cuarta_derivada` y
+  `tabla_convergencia_simpson`.
+- `gaa_s13_simpson.py` — programa de consola de la GAA: pide a, b y n,
+  detiene la ejecución si n es impar, y muestra la tabla de convergencia
+  para n ∈ {2, 4, 6, 12, 24}.
+- **Caso GAA — Centro de datos:** P(t) = 10 + 5t·sen(πt/6) + e^(0.2t) kW en
+  [0, 6] h. Con n = 6 (h = 1): **E ≈ 128.9212 kWh**; exacto
+  55 + 180/π + 5e^1.2 = **128.8964 kWh**. Cota con M = 0.45: 0.015 kWh
+  (la guía subestima M; el máximo real de |P⁽⁴⁾| es ≈ 3.433).
+
+```bash
+python simpson_solver.py       # autoprueba con los casos de la GT, GP y GAA
+python gaa_s13_simpson.py      # programa de la GAA (Enter = a=0, b=6, n=6)
+```
+````
