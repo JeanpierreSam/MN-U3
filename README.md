@@ -17,9 +17,12 @@ MN-U3/
 ├── integracion_solver.py                    <- lógica de la Sesión 12 (Trapecio / Rectángulos)
 ├── simpson_solver.py                        <- lógica de la Sesión 13 (Simpson 1/3 y 3/8)
 ├── gaa_s13_simpson.py                       <- programa de consola de la GAA 13 (input + excepción)
+├── edo_solver.py                            <- lógica de la Sesión 14 (Euler, Heun, RK3, RK4)
+├── gaa_s14_edo.py                           <- programa de consola de la GAA 14
 └── pages/
     ├── 1_Sesion_12_Integracion_Trapecio.py  <- interfaz de la Sesión 12
-    └── 2_Sesion_13_Integracion_Simpson.py   <- interfaz de la Sesión 13
+    ├── 2_Sesion_13_Integracion_Simpson.py   <- interfaz de la Sesión 13
+    └── 3_Sesion_14_EDO.py                   <- interfaz de la Sesión 14
 ```
 
 ## Cómo correr la app localmente
@@ -85,3 +88,23 @@ python simpson_solver.py       # autoprueba con los casos de la GT, GP y GAA
 python gaa_s13_simpson.py      # programa de la GAA (Enter = a=0, b=6, n=6)
 ```
 ````
+
+## Sesión 14 — Ecuaciones diferenciales ordinarias (PVI)
+
+- `edo_solver.py` — `euler`, `euler_mejorado` (Heun: predictor + corrector),
+  `rk3`, `rk4`, `resolver(f, x0, y0, xf, h, metodo)`, `tabla_paso_a_paso`,
+  `tabla_metodos` (error absoluto y relativo %), `tabla_convergencia_h`,
+  `construir_funcion_xy` (f(x, y) como texto) y `PasoInvalidoError`
+  (si h no divide al intervalo).
+- `gaa_s14_edo.py` — programa de consola de la GAA: pide f(x, y), x0, y0,
+  x final y h; muestra el paso a paso de Euler y Euler mejorado y compara
+  los errores relativos con el valor verdadero.
+- **Caso GAA:** (y² − x²)dx + xy dy = 0, y(1) = 2 → y' = (x² − y²)/(xy),
+  exacta y = √((7 + x⁴)/(2x²)). Con h = 0.1: **Euler y(1.2) ≈ 1.741278
+  (error 1.90 %)**, **Euler mejorado ≈ 1.775807 (error 0.0465 %)**,
+  exacto 1.774980.
+
+```bash
+python edo_solver.py     # autoprueba con los casos de la GT, GP y GAA
+python gaa_s14_edo.py    # programa de la GAA (Enter = valores de la guía)
+```
