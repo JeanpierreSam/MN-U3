@@ -87,7 +87,6 @@ python integracion_solver.py   # autoprueba con todos los casos de las guías
 python simpson_solver.py       # autoprueba con los casos de la GT, GP y GAA
 python gaa_s13_simpson.py      # programa de la GAA (Enter = a=0, b=6, n=6)
 ```
-````
 
 ## Sesión 14 — Ecuaciones diferenciales ordinarias (PVI)
 
