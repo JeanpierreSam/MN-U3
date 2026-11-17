@@ -107,3 +107,10 @@ python gaa_s13_simpson.py      # programa de la GAA (Enter = a=0, b=6, n=6)
 python edo_solver.py     # autoprueba con los casos de la GT, GP y GAA
 python gaa_s14_edo.py    # programa de la GAA (Enter = valores de la guía)
 ```
+
+## Examen 3 — Métodos Numéricos
+
+- `examen3_solver.py` — programa de verificación del examen.
+  - **Problema 1:** datos con dos espaciados. Simpson 1/3 en [0, 30] (h = 5, n = 6) y Simpson 3/8 en [30, 60] (h = 10, n = 3). Resultado: **E = 153.347222 kWh** y potencia promedio **153.347222 kW**.
+  - **Problema 2:** PVI y' = (2x + y)/x, y(1) = 1, con RK4 (h = 0.2 y h = 0.1). Resultado: y(2.6) ≈ **7.568600** (h = 0.2) y **7.568656** (h = 0.1); errores relativos **7.8477e-06** y **4.6125e-07** (factor ≈ 17.01). Se compara con RK2 (Heun), factor ≈ 3.78.
+- Ejecutar: `python examen3_solver.py`
