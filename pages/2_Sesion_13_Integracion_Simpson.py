@@ -288,6 +288,18 @@ with tab_datos:
             x=alt.X("x:Q", title="distancia (m)"), y=alt.Y("y:Q", title="elevación (m)")), width="stretch")
     except Exception as exc:  # noqa: BLE001
         st.error(str(exc))
+    st.markdown("---")
+    st.markdown("**Examen 3 — Potencia de un rack (1 h):** dos espaciados (h = 5 min en [0, 30] y h = 10 min en [30, 60]). "
+                "Simpson 1/3 en el primer tramo (n = 6) y 3/8 en el segundo (n = 3).")
+    t_rack = pd.DataFrame({"t (min)": [0, 5, 10, 15, 20, 25, 30, 40, 50, 60],
+                           "P (kW)": [120, 134, 151, 163, 158, 147, 140, 152, 171, 165]})
+    st.dataframe(t_rack, hide_index=True)
+    p_rack = t_rack["P (kW)"].to_numpy(dtype=float)
+    i1, i2 = simpson13_datos(p_rack[:7], 5.0), simpson38_datos(p_rack[6:], 10.0)
+    e1, e2, e3 = st.columns(3)
+    e1.metric("I₁ Simpson 1/3 [0, 30]", f"{i1:.4f} kW·min")
+    e2.metric("I₂ Simpson 3/8 [30, 60]", f"{i2:.4f} kW·min")
+    e3.metric("E = potencia prom. (÷60)", f"{(i1 + i2) / 60:.6f}", help="kWh y kW (intervalo de 1 h)")
 
 st.markdown("---")
 st.caption("Basado en la Guía Teórica (GT), la Guía de Práctica (GP) y la GAA, Sesión 13 — Integración, UPeU.")

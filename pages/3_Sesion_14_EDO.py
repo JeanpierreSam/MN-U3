@@ -97,11 +97,16 @@ with tab_gaa:
 # =====================================================================
 # 2. MODO LIBRE
 # =====================================================================
+def exacto_examen3(x):  # x dy - (2x + y) dx = 0, y(1) = 1
+    return x * (2 * np.log(x) + 1)
+
+
 EJEMPLOS = {
     "GAA — (y²−x²)dx + xy dy = 0": ("(x^2 - y^2)/(x*y)", 1.0, 2.0, 1.2, 0.1, exacto_gaa14),
     "GT/GP — y' = x + y, y(0)=1 (h=0.2)": ("x + y", 0.0, 1.0, 1.0, 0.2, exacto_lineal),
     "GT — Ejercicio y' = 2xy, y(1)=1": ("2*x*y", 1.0, 1.0, 1.5, 0.1, exacto_2xy),
     "GT — Problema y' = e^(x+y), y(1)=0": ("exp(x + y)", 1.0, 0.0, 1.2, 0.1, exacto_expxy),
+    "Examen 3 — x dy − (2x+y) dx = 0, y(1)=1, y(2.6) (usar RK4, h=0.2 y 0.1)": ("(2*x + y)/x", 1.0, 1.0, 2.6, 0.2, exacto_examen3),
 }
 EXACTAS = {v[0]: v[5] for v in EJEMPLOS.values()}
 
